@@ -1,6 +1,3 @@
-# modules/iam/main.tf
-# Roles IAM con principio de mínimo privilegio (least-privilege)
-
 # ─── POLÍTICA DE CONFIANZA COMÚN PARA LAMBDA ─────────────────────────────────
 data "aws_iam_policy_document" "lambda_assume_role" {
   statement {
