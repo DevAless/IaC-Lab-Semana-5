@@ -6,7 +6,7 @@ variable "aws_region" {
 }
 
 variable "alarm_email" {
-  description = "Email para alertas del DLQ (opcional)"
+  description = "Email para alertas del DLQ"
   type        = string
   default     = ""
 }
