@@ -1,6 +1,3 @@
-# modules/vpc/main.tf
-# VPC, subnets, IGW, NAT Gateways (solo en prod), rutas y VPC Endpoints
-
 # ─── VPC ──────────────────────────────────────────────────────────────────────
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
