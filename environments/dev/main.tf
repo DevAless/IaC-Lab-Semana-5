@@ -1,13 +1,3 @@
-# environments/dev/main.tf
-# Entorno de DESARROLLO — Costo mínimo
-# Cambios justificados respecto al diagrama PROD:
-#   - Sin NAT Gateways (ahorro ~$64/mes): las Lambdas usan subnets privadas
-#     con acceso a S3 vía Gateway Endpoint (gratis) y SQS por endpoint de red.
-#   - Sin SQS Interface Endpoint (ahorro ~$14/mes): acceso por internet en dev.
-#   - Sin segunda AZ: no se requiere HA en desarrollo.
-#   - Retención de logs: 3 días (vs 14 en prod).
-#   - Throttling reducido a 100 RPS.
-
 terraform {
   required_version = ">= 1.6"
   required_providers {
