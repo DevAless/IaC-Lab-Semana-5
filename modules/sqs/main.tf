@@ -1,6 +1,3 @@
-# modules/sqs/main.tf
-# Cola principal + Dead-Letter Queue con política de acceso
-
 # ─── DEAD-LETTER QUEUE ────────────────────────────────────────────────────────
 resource "aws_sqs_queue" "dlq" {
   name                      = "${var.project}-${var.env}-image-dlq"
