@@ -1,8 +1,3 @@
-# environments/prod/main.tf
-# Entorno PRODUCCIÓN — Arquitectura completa del diagrama
-# Incluye: NAT Gateways ×2, multi-AZ, SQS Interface Endpoint, retención 14 días
-# ADVERTENCIA: Este entorno incurre en costos reales. Revisar antes de aplicar.
-
 terraform {
   required_version = ">= 1.6"
   required_providers {
