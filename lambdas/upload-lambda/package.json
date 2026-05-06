@@ -1,0 +1,11 @@
+{
+  "name": "upload-lambda",
+  "version": "1.0.0",
+  "description": "Recibe la imagen del cliente y la guarda en S3 uploads/",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "busboy": "^1.6.0",
+    "uuid": "^9.0.0"
+  }
+}

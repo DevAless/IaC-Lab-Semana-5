@@ -1,0 +1,10 @@
+{
+  "name": "crop-lambda",
+  "version": "1.0.0",
+  "description": "Recorta imágenes a 40x40 PNG circular. Triggered por SQS.",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "sharp": "^0.33.0"
+  }
+}
