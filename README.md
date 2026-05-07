@@ -1,5 +1,8 @@
-Image Processor — Infraestructura como Código
-Proyecto universitario para el curso de Infraestructura como Código. Implementa una arquitectura serverless de procesamiento de imágenes en AWS, desplegable en tres entornos independientes (DEV, QA y PROD) mediante Terraform.
+Lab Semana 4 - Procesador de Imagen — Infraestructura como Código
+
+Alumno: Colona Chávez, Fabricio
+
+Implementa una arquitectura serverless de procesamiento de imágenes en AWS, desplegable en tres entornos independientes (DEV, QA y PROD) mediante Terraform.
 ---
 Descripción General
 La arquitectura permite a un cliente subir una imagen a través de una API REST. La imagen se almacena en S3 y, de forma asíncrona y desacoplada, se recorta automáticamente a un formato circular de 40×40 píxeles. Este flujo desacopla la carga de la imagen del procesamiento, siguiendo un patrón habitual en aplicaciones que manejan medios como redes sociales o plataformas de perfil de usuario.
