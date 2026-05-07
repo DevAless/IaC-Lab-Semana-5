@@ -1,7 +1,7 @@
+Alumno: Colona Chávez, Fabricio (ID: 000244576)
+
 Procesador de Imagen — Infraestructura como Código
 Implementa una arquitectura serverless de procesamiento de imágenes en AWS, desplegable en tres entornos independientes (DEV, QA y PROD) mediante Terraform.
-
-Alumno: Colona Chávez, Fabricio (ID: 000244576)
 ---
 Descripción General
 La arquitectura permite subir una imagen a través de una API REST. La imagen se almacena en S3 y, de forma asíncrona y desacoplada, se recorta automáticamente a un formato circular de 40×40 píxeles. Este flujo desacopla la carga de la imagen del procesamiento, siguiendo un patrón habitual en aplicaciones que manejan medios (redes sociales, plataformas de perfil, etc.).
