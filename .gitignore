@@ -1,0 +1,11 @@
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform.lock.hcl
+crash.log
+*.zip
+*.tfvars
+*.tfvars.json
+.DS_Store
+Thumbs.db
