@@ -1,7 +1,7 @@
 # ─── VPC ──────────────────────────────────────────────────────────────────────
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
-  enable_dns_resolution = true
+  enable_dns_support = true
   enable_dns_hostnames  = true
 
   tags = merge(var.tags, {
@@ -263,7 +263,7 @@ resource "aws_vpc_endpoint" "sqs" {
 # ─── SECURITY GROUPS PARA LAMBDAS ────────────────────────────────────────────
 resource "aws_security_group" "upload_lambda" {
   name        = "${var.project}-${var.env}-sg-upload-lambda"
-  description = "SG para upload Lambda — sin inbound, outbound HTTPS a S3/SQS"
+  description = "SG upload Lambda - outbound HTTPS to S3 and SQS"
   vpc_id      = aws_vpc.main.id
 
   egress {
@@ -281,7 +281,7 @@ resource "aws_security_group" "upload_lambda" {
 
 resource "aws_security_group" "crop_lambda" {
   name        = "${var.project}-${var.env}-sg-crop-lambda"
-  description = "SG para crop Lambda — sin inbound, outbound HTTPS a S3/SQS"
+  description = "SG crop Lambda - outbound HTTPS to S3 and SQS"
   vpc_id      = aws_vpc.main.id
 
   egress {

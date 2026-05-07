@@ -122,6 +122,7 @@ module "lambda" {
   sg_crop_lambda_id   = module.vpc.sg_crop_lambda_id
 
   api_gateway_execution_arn = aws_apigatewayv2_api.placeholder.execution_arn
+  enable_vpc          = false
   s3_endpoint_dependency    = module.vpc.s3_endpoint_id
 
   upload_zip_path = var.upload_zip_path

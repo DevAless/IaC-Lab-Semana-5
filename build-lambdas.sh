@@ -1,38 +1,34 @@
 #!/bin/bash
-# build-lambdas.sh
-# Empaqueta las lambdas en .zip listos para Terraform
-# Ejecutar desde la raíz del proyecto: bash build-lambdas.sh
-
-set -e
-
 echo "=== Empaquetando lambdas para deploy ==="
 ROOT_DIR=$(pwd)
+
+# Convertir ruta Unix a Windows para PowerShell
+WIN_ROOT=$(cygpath -w "$ROOT_DIR")
 
 # ─── upload-lambda ────────────────────────────────────────────────────────────
 echo ""
 echo "→ Instalando dependencias de upload-lambda..."
 cd "$ROOT_DIR/lambdas/upload-lambda"
 npm install --omit=dev
+
 echo "→ Generando upload-lambda.zip..."
-zip -r "$ROOT_DIR/upload-lambda.zip" . --exclude "*.test.js" --exclude ".env*"
-echo "✓ upload-lambda.zip generado ($(du -sh "$ROOT_DIR/upload-lambda.zip" | cut -f1))"
+WIN_SRC=$(cygpath -w "$ROOT_DIR/lambdas/upload-lambda")
+WIN_DST=$(cygpath -w "$ROOT_DIR/upload-lambda.zip")
+powershell.exe -Command "Compress-Archive -Path '$WIN_SRC\*' -DestinationPath '$WIN_DST' -Force"
+echo "✓ upload-lambda.zip generado"
 
 # ─── crop-lambda ─────────────────────────────────────────────────────────────
 echo ""
 echo "→ Instalando dependencias de crop-lambda..."
 cd "$ROOT_DIR/lambdas/crop-lambda"
-# Sharp necesita binarios nativos para Linux x64 (plataforma de Lambda)
-npm install --omit=dev --platform=linux --arch=x64
+npm install --omit=dev
+
 echo "→ Generando crop-lambda.zip..."
-zip -r "$ROOT_DIR/crop-lambda.zip" . --exclude "*.test.js" --exclude ".env*"
-echo "✓ crop-lambda.zip generado ($(du -sh "$ROOT_DIR/crop-lambda.zip" | cut -f1))"
+WIN_SRC=$(cygpath -w "$ROOT_DIR/lambdas/crop-lambda")
+WIN_DST=$(cygpath -w "$ROOT_DIR/crop-lambda.zip")
+powershell.exe -Command "Compress-Archive -Path '$WIN_SRC\*' -DestinationPath '$WIN_DST' -Force"
+echo "✓ crop-lambda.zip generado"
 
 cd "$ROOT_DIR"
 echo ""
 echo "=== Listo. Ahora puedes ejecutar terraform apply en el entorno deseado. ==="
-echo ""
-echo "Ejemplo:"
-echo "  cd environments/dev"
-echo "  terraform init"
-echo "  terraform plan"
-echo "  terraform apply"
